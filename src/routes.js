@@ -1,14 +1,15 @@
-import React from 'react';
-import { Route, IndexRoute }  from 'react-router';
-import App from './components/App';
-import CounterPage from './components/CounterPage';
-import HelloWorldPage from './components/HelloWorldPage';
-import TimePage from './components/TimePage';
+import React from 'react'
+import { Route, IndexRoute }  from 'react-router'
+import MainPage from './components/MainPage'
+import Header from './components/Header'
+import AboutPage from './components/AboutPage'
+import CategoriesPage from './components/CategoriesPage'
 
 export default (
-  <Route component={App} path='/'>
-    <IndexRoute component={HelloWorldPage} />
-    <Route component={CounterPage} path='counters' />
-    <Route component={TimePage} path='time' />
-  </Route>
-);
+  <div>
+    <Header />
+    <Route component={MainPage} path='/' />
+    <Route exact component={CategoriesPage} path='/categories' />
+    <Route exact component={AboutPage} path='/about' />
+  </div>
+)

@@ -5,9 +5,19 @@ import './Slider.styl'
 class Slider extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      height: 0
+    }
+  }
+  componentDidMount() {
+    this.setState({
+      height: window.innerHeight
+    })
   }
 
   render() {
+    const { height } = this.state
+
     return (
       <div className='Slider'>
         <Carousel
@@ -18,17 +28,17 @@ class Slider extends Component {
         >
           <Carousel.Item>
             <div>
-              <img style={{ height: window.innerHeight }} src='./img/1.jpg' />
+              <img style={{ height }} src='./img/1.jpg' />
             </div>
           </Carousel.Item>
           <Carousel.Item>
             <div>
-              <img style={{ height: window.innerHeight }} src='./img/2.jpg' />
+              <img style={{ height }} src='./img/2.jpg' />
             </div>
           </Carousel.Item>
           <Carousel.Item>
             <div>
-              <img style={{ height: window.innerHeight }} src='./img/3.jpg' />
+              <img style={{ height }} src='./img/3.jpg' />
             </div>
           </Carousel.Item>
         </Carousel>

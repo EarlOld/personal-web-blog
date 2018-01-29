@@ -1,6 +1,7 @@
 import express  from 'express'
 import path from 'path'
 import fs from 'fs'
+import mongo from 'mongodb'
 import React from 'react'
 import ReactDom from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
@@ -12,6 +13,18 @@ import configureStore from './redux/configureStore'
 const app = express()
 const store = configureStore()
 
+const MongoClient = require('mongodb').MongoClient
+const url = 'mongodb://localhost:27017/mydb'
+
+MongoClient.connect(url, (err, db) => {
+  if (err) throw err
+  console.log("Database created!")
+  db.close()
+})
+
+app.get('/about', (req, res) => {
+  res.send('API is running')
+})
 app.use(express.static(path.join(__dirname, 'dist')))
 
 app.use((req, res) => {
@@ -36,6 +49,7 @@ app.use((req, res) => {
           <RouterContext {...renderProps} />
         </Provider>
       )
+
       console.log(req.url)
       return res.end(renderHTML(componentHTML))
     })

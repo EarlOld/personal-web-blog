@@ -12,6 +12,26 @@ class Post extends Component {
         <div className='title Post-title'>
           Проводник
         </div>
+        <div className='Post-details'>
+          <span className='Post-details-elem'>
+            <i className='fa fa-user' />
+            <a href='#' title='Posts by author' rel='author'>
+              author
+            </a>
+          </span>
+          <span className='Post-details-elem'>
+            <i className='fa fa-clock-o' />
+            <a href='#' title='Date' >
+              Date
+            </a>
+          </span>
+          <span className='Post-details-elem'>
+            <i className='fa fa-comments-o' />
+            <a href='#'>
+              0 Comments
+            </a>
+          </span>
+        </div>
         <div className='text Post-text'>
           <p>Он так отчаянно силился вспомнить, как ступил на тропу безоборотного саморазрушения, напрочь исключающего любые смягчающие обстоятельства...
             Возможно это был всего один шаг, возможно это было длительное шествие, лишь кажущееся, ему самому мгновением...</p>

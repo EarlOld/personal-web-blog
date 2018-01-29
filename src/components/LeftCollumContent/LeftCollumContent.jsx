@@ -13,8 +13,8 @@ class LeftCollumContent extends Component {
         <div className='LeftCollumContent-title'>
           <i className='fa fa-bars' aria-hidden='true'/>
           <h1 className='title LeftCollumContent-title-text'>Writer</h1>
+          <ShareIcons />
         </div>
-        <ShareIcons />
         <h2 className='text LeftCollumContent-description'>Персональная авторская страница</h2>
       </div>
     )
