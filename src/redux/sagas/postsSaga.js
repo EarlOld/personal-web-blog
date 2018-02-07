@@ -2,7 +2,7 @@ import { put, takeEvery, fork, call } from 'redux-saga/effects'
 
 import {
   ADD_POST,
-  post
+  posts
 } from '../actions'
 
 const actions = [
@@ -10,7 +10,10 @@ const actions = [
 ]
 
 function* addPost() {
-  return "sdf"
+  yield put(posts.addPost({
+    success: true,
+    payload: 'Post added'
+  }))
 }
 
 

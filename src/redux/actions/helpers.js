@@ -1,4 +1,3 @@
-/* eslint func-style: ["error", "expression"]*/
 const defaultParams = {
   separator: '/',
   successPrefix: 'SUCCESS',

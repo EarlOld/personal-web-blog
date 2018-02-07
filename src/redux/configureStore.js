@@ -1,11 +1,15 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux'
-import thunk from 'redux-thunk'
-import counterReducer from './reducers/counterReducer'
+/* eslint func-style: ["error", "expression"]*/
+import rootSaga from './sagas'
+import logger from 'redux-logger'
+import rootReducer from './reducers'
+import createSagaMiddleware from 'redux-saga'
+import { applyMiddleware, createStore } from 'redux'
+
+const sagaMiddleware = createSagaMiddleware()
 
 export default function (initialState = {}) {
-  const rootReducer = combineReducers({
-    counter: counterReducer
-  })
+  const store = createStore(rootReducer, initialState, applyMiddleware(sagaMiddleware, logger))
 
-  return createStore(rootReducer, initialState, applyMiddleware(thunk))
+  sagaMiddleware.run(rootSaga)
+  return store
 }

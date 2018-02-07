@@ -1,9 +1,17 @@
-import React, { Component } from 'react'
 import './Post.styl'
+import { connect } from 'react-redux'
+import { posts as postActions } from '../../redux/actions'
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
 
 class Post extends Component {
   constructor(props) {
     super(props)
+  }
+  componentDidMount() {
+    this.props.addPost('sadasdasdasd')
+
   }
 
   render() {
@@ -57,4 +65,18 @@ class Post extends Component {
   }
 }
 
-export default Post
+Post.propTypes = {
+  addPost: PropTypes.func
+}
+//
+// const mapStateToProps = state => ({
+//
+// });
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addPost: postActions.addPost
+  }, dispatch)
+)
+
+export default connect(null, mapDispatchToProps)(Post)

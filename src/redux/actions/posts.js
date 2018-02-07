@@ -10,7 +10,7 @@ const SUCCESS_ADD_POST              = genNotesAction('ADD_POST', { success: true
 const FAIL_ADD_POST                 = genNotesAction('ADD_POST', { success: false })
 
 const actionCreators = {
-  addNote: {
+  addPost: {
     default: ADD_POST,
     success: SUCCESS_ADD_POST,
     failure: FAIL_ADD_POST

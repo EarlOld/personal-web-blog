@@ -1,12 +1,12 @@
-import post from './post'
+import posts from './posts'
 
 const actionCreators = {
-  post
+  posts
 }
 
 export {
   actionCreators as default,
-  post
+  posts
 }
 
-export * from './post'
+export * from './posts'
