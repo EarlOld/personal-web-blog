@@ -15,11 +15,25 @@ import User from './models/user'
 const store = createStore(rootReducer, {})
 const app = express()
 
-User.find({ name: 'Test' }, (err, name) => {
-  console.log(name);
-})
 
+// const use = new User({
+//   name: 'Test1',
+//   password: 'test'
+// })
+//
+// use.save((err, user, affected) => {
+//   if (err) {
+//     throw err
+  //   }
+  //   console.log(user);
+  //   User.findOne({ name: 'Test1' }, (err, name) => {
+  //     console.log(name);
+  //   })
+  // })
 
+User.findOne({ name: 'Test1' }, (err, name) => {
+    console.log(name);
+  })
 app.get('/about', (req, res) => {
   res.send('API is running')
 })
