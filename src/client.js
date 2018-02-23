@@ -25,3 +25,5 @@ const component = (
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(component, document.getElementById('react-view'))
+
+export default store
