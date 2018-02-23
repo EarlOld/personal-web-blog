@@ -1,34 +1,33 @@
 import express  from 'express'
 import path from 'path'
 import fs from 'fs'
-import mongo from 'mongodb'
 import React from 'react'
 import ReactDom from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import { Provider } from 'react-redux'
 import routes from './routes'
-import configureStore from './redux/configureStore'
+import rootReducer from './redux/reducers'
+import bodyParser from 'body-parser'
+import { createStore } from 'redux'
 
+import User from './models/user'
 
+const store = createStore(rootReducer, {})
 const app = express()
-const store = configureStore()
 
-const MongoClient = require('mongodb').MongoClient
-const url = 'mongodb://localhost:27017/mydb'
-
-MongoClient.connect(url, (err, db) => {
-  if (err) throw err
-  console.log("Database created!")
-  db.close()
+User.find({ name: 'Test' }, (err, name) => {
+  console.log(name);
 })
+
 
 app.get('/about', (req, res) => {
   res.send('API is running')
 })
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'dist')))
 
 app.use((req, res) => {
-  if (~req.url.indexOf('img')) {
+  if (~req.url.indexOf('img') || ~req.url.indexOf('bundle')) {
     fs.readFile(path.join(__dirname, req.url), (error, data) => {
       if (error) throw error
       res.end(data)
